@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* מונע גלילה */
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('voyage.png') no-repeat center center fixed;
+            background-size: 100% 100%; /* מבטיח שהתמונה תשתרע על כל המסך */
+            height: 100vh; /* גובה מלא של חלון הצפייה */
+        }
+
+        .navbar {
+            position: absolute;
+            top: 130px;
+            left: 0;
+            width: 120px;
+            height: calc(100vh - 100px); /* גובה של כל המסך פחות 100 פיקסלים */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 60px;
+        }
+
+        .navbar a {
+            display: block;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.2); /* רקע שקוף למחצה */
+            text-decoration: none;
+            margin-bottom: 4px; /* רווח בין כפתורים */
+        }
+
+        .navbar a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* שדות קלט לבנים להזנת טקסט */
+        .input-field {
+            position: absolute;
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .input-field::placeholder {
+            color: #aaa;
+        }
+
+        /* כפתור שחור עם טקסט לבן */
+        .custom-button {
+            position: absolute;
+            background-color: black;
+            color: white;
+            padding: 15px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .custom-button:hover {
+            opacity: 0.8;
+        }
+
+        /* מיקום ידני של שדות הקלט */
+        .input1 { top: 350px; left: 280px; }
+        .input2 { top: 350px; left: 650px; }
+        .input3 { top: 450px; left: 280px; }
+        .input4 { top: 450px; left: 650px; }
+
+        /* מיקום ידני של הכפתור השחור */
+        .custom-button {
+            top: 590px;
+            left: 565px;
+        }
+
+        /* עיצוב עיגולי הרדיו */
+        .radio-group {
+            position: absolute;
+        }
+
+        .radio1 { top: 527px; left: 290px; } /* מיקום ידני לעיגול הראשון */
+        .radio2 { top: 527px; left: 630px; } /* מיקום ידני לעיגול השני */
+
+        input[type="radio"] {
+            appearance: none; /* מסיר את העיצוב ברירת המחדל */
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            box-shadow: inset 0 0 0 2px white; /* מסגרת פנימית של 1 פיקסל בצבע לבן */
+        }
+
+        input[type="radio"]:checked {
+            background-color: black; /* עיגול מתמלא בשחור כשהוא נבחר */
+        }
+
+        /* תמונה details.png שמופיעה לאחר הלחיצה על Submit */
+        .details-image {
+            display: none; /* מוסתרת כברירת מחדל */
+            position: absolute;
+            width: 900px;
+            height: auto;
+            top: 300px; /* מיקום ידני */
+            left: 1110px; /* מיקום ידני */
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="voyage.html" style="height: 50px;"></a>
+        <a href="navigation.html" style="height: 47px;"></a>
+        <a href="weather.html" style="height: 47px;"></a>
+        <a href="routes.html" style="height: 54px;"></a>
+        <a href="fuel.html" style="height: 54px;"></a>
+        <a href="analytics.html" style="height: 53px;"></a>
+        <a href="report.html" style="height: 56px;"></a>
+        <a href="queue.html" style="height: 45px;"></a>
+        <a href="radar.html" style="height: 50px;"></a>
+        <a href="camera.html" style="height: 50px;"></a>
+        <a href="information.html" style="height: 51px;"></a>
+        <a href="chat.html" style="height: 50px;"></a>
+    </div>
+
+    <!-- שדות קלט להזנת טקסט -->
+    <input type="text" class="input-field input1" placeholder="Haifa, Israel">
+    <input type="text" class="input-field input2" placeholder="11 Oct 2024 10:42">
+    <input type="text" class="input-field input3" placeholder="Volos, Greece">
+    <input type="text" class="input-field input4" placeholder="15 Oct 2024 13:21">
+
+    <!-- כפתור שחור עם טקסט לבן -->
+    <button class="custom-button" onclick="showImage()">Submit</button>
+
+    <!-- עיגולי רדיו (Check Boxes) -->
+    <div class="radio-group">
+        <input type="radio" name="option" class="radio1">
+        <input type="radio" name="option" class="radio2">
+    </div>
+
+    <!-- התמונה שתופיע במרכז המסך לאחר הלחיצה -->
+    <img src="details.png" class="details-image" id="detailsImage">
+
+    <script>
+        function showImage() {
+            // מציג את התמונה כשהכפתור נלחץ
+            document.getElementById('detailsImage').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
